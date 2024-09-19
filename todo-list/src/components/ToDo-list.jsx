@@ -47,7 +47,7 @@ export function ToDoList() {
     };
 
     return (
-        <div className="header">
+        <div className="todo-container">
             <h2>TO-DO LIST</h2>
             <input
                 type="text"

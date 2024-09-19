@@ -103,3 +103,10 @@ li i.disabled {
     color: #ccc;
     cursor: not-allowed;
 }
+.todo-container {
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: lightgrey;
+  border-radius: 5%;
+}

@@ -4,14 +4,20 @@ import './Login.css';
 import { useNavigate} from 'react-router-dom';
 
 export function Login() {
-
+    // Almacena el Correo 
     const [email, setEmail] = useState('');
+    // Almacena  la contrasena
     const [password, setPassword] = useState('');
+    //Almacena mensajes de error
     const [error, setError] = useState('');
+    // Estado para indicar si hay un error en el campo de correo electrónico
     const [emailError, setEmailError] = useState(false);
+    // Estado para indicar si hay un error en el campo de contraseña
     const [passwordError, setPasswordError] = useState(false);
+    // Navegación para redirigir al usuario
     const navigate = useNavigate();
 
+    // Para manejar el envio del formulario de inicio de Sesion
     const handleLogin = async (e) =>{
         e.preventDefault();
         setEmailError(false);
@@ -19,11 +25,14 @@ export function Login() {
         setError('');
 
         try {
+          // Realiza una solicitud POST a la API de inicio de sesión
             const response = await axios.post('https://reqres.in/api/login', {email,password,});
             if(response.status === 200){
+                // Redirige al usuario a la página de lista de tareas si el inicio de sesión es exitoso
                 navigate('/ToDo-list');
             }
         } catch (err) {
+          // Muestra un mensaje de error si el inicio de sesión falla
             setError('Login failed. Please check your credentials.');
             setEmailError(true);
             setPasswordError( true);
